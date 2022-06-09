@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="p-8">
     <div class="home bg-faintGrey min-h-screen p-8 max-w-[894px] mx-auto">
       <div class="overview bg-white rounded-[4px] px-8 py-9">
         <div class="flex items-start md:flex-row flex-col w-full mb-3">
@@ -44,7 +44,7 @@
       </div>
 
       <div class="relative">
-        <div class="bg-white rounded-[4px] p-8 my-8">
+        <div class="bg-white rounded-[4px] p-8 mt-8">
           <div class="relative">
             <div class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
               Team
