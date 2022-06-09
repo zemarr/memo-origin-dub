@@ -42,7 +42,7 @@
       </div>
     </div>
 
-    <div class="grid md:grid-cols-2 grid-cols-1 gap-8">
+    <div class="relative">
       <div class="bg-white rounded-[4px] p-8 my-8">
         <div class="relative">
           <div class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
@@ -78,9 +78,6 @@
           </div>
           <p class="mb-6 text-greyText text-[14px]">While customer acquisition is the act of gaining new customers, customer retention is focused on developing better relationships with your existing customers.</p>
         </div>
-      </div>
-
-      <div class="bg-white rounded-[4px] p-8 my-8">
         <div class="relative">
           <div class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
             Summary Financials
