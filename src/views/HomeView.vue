@@ -1,5 +1,5 @@
 <template>
-  <main class="p-8">
+  <main class="p-[72px]">
     <div class="home bg-faintGrey min-h-screen p-8 max-w-[894px] mx-auto">
       <div class="overview bg-white rounded-[4px] px-8 py-9">
         <div class="flex items-start md:flex-row flex-col w-full mb-3">
