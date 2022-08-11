@@ -12,8 +12,8 @@ jobs:
   create_deployment:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
       - name: Set Up Environment Variables
+        uses: actions/checkout@v2
         run: |
           chmod +x ./scripts/setup_env.sh
           ./scripts/setup_env.sh
@@ -29,10 +29,10 @@ jobs:
           node-version: '14.x'
 
       - name: 🧰 Install dependencies
-      - run: npm install --legacy-peer-deps
+        run: npm install --legacy-peer-deps
 
       - name: 📦 Build project
-      - run: npm run build --if-present
+        run: npm run build --if-present
       # Deploy to Netlify using our dev secrets
       - name: 🚀 Deploy to Netlify
         uses: netlify/actions/cli@master
