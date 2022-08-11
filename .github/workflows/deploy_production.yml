@@ -12,8 +12,8 @@ jobs:
   create_deployment:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Set Up Environment Variables
-        uses: actions/checkout@v2
         run: |
           chmod +x ./scripts/setup_env.sh
           ./scripts/setup_env.sh
