@@ -1,0 +1,3 @@
+#!/bin/sh
+echo VUE_APP_API_URL=$VUE_APP_API_URL >> .env
+echo VUE_APP_ORIGINS_S3_BUCKET=$VUE_APP_ORIGINS_S3_BUCKET >> .env
