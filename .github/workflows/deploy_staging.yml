@@ -1,0 +1,43 @@
+name: Deploy memo to netlify staging
+
+env:
+  VUE_APP_API_URL: https://staging-api-v2.kinfolk.vc
+  VUE_APP_ORIGINS_S3_BUCKET: https://origins-files-staging.s3.us-east-2.amazonaws.com/files/
+
+on:
+  push:
+    branches: [ develop ]
+
+jobs:
+  create_deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set Up Environment Variables
+        run: |
+          chmod +x ./scripts/setup_env.sh
+          ./scripts/setup_env.sh
+        shell: bash
+      - name: Show .env file content
+        run: |
+          pwd
+          ls -la
+          cat .env
+      - name: Build Application
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+
+      - name: 🧰 Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: 📦 Build project
+        run: npm run build --if-present
+      # Deploy to Netlify using our dev secrets
+      - name: 🚀 Deploy to Netlify
+        uses: netlify/actions/cli@master
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.STAGING_NETLIFY_SITE_ID }}
+        with:
+          args: deploy --dir=dist --prod --message '${{ github.event.head_commit.message }}'
