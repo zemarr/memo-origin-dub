@@ -1,12 +1,12 @@
-name: Deploy memo to netlify production
+name: Deploy memo to netlify staging
 
 env:
-  VUE_APP_API_URL: https://api.kinfolk.vc
-  VUE_APP_ORIGINS_S3_BUCKET: https://origins-files-production.s3.us-east-2.amazonaws.com/files/
+  VUE_APP_API_URL: https://staging-api-v2.kinfolk.vc
+  VUE_APP_ORIGINS_S3_BUCKET: https://origins-files-staging.s3.us-east-2.amazonaws.com/files/
 
 on:
   push:
-    branches: [ master ]
+    branches: [ develop ]
 
 jobs:
   create_deployment:
@@ -38,6 +38,6 @@ jobs:
         uses: netlify/actions/cli@master
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_SITE_ID: ${{ secrets.STAGING_NETLIFY_SITE_ID }}
         with:
           args: deploy --dir=dist --prod --message '${{ github.event.head_commit.message }}'
