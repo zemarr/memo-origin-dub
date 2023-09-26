@@ -1,5 +1,6 @@
 <template>
-  <main class="p-[72px]">
+  <LayoutHome :contentData="memo">
+  <main class="bg-grey-300">
     <div
       :class="!dataloaded ? 'flex items-center justify-center home bg-faintGrey min-h-screen p-8 max-w-[894px] mx-auto' : ''"
     >
@@ -82,7 +83,7 @@
         <div class="relative">
           <div class="bg-white rounded-[4px] p-8 mt-8">
             <div class="relative">
-              <div class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
+              <div id="team" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Team
               </div>
               <ul class="mb-6 list-disc ml-4 text-greyText text-[14px]">
@@ -129,7 +130,7 @@
               </div>
             </div>
             <div class="relative mb-12">
-              <div class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
+              <div id="customer_pricing" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Customer & Pricing
               </div>
               <pre class="mb-6 text-greyText text-[14px] px-2">
@@ -168,7 +169,7 @@
               </div>
             </div>
             <div class="mb-12 relative">
-              <div class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
+              <div id="product" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Product
               </div>
               <pre class="mb-6 text-greyText text-[14px] px-2">
@@ -207,7 +208,7 @@
               </div>
             </div>
             <div class="relative mb-12">
-              <div class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
+              <div id="customers_cquisition_retention" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Customers Acquisition & Retention
               </div>
               <pre class="mb-6 text-greyText text-[14px] px-2">
@@ -246,7 +247,7 @@
               </div>
             </div>
             <div class="relative mb-12">
-              <div class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
+              <div id="summary_financial" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Summary Financials
               </div>
               <pre class="mb-6 text-greyText text-[14px] px-2">
@@ -285,7 +286,7 @@
               </div>
             </div>
             <div class="relative mb-12">
-              <div class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
+              <div id="deal" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Deal
               </div>
               <pre class="mb-6 text-greyText text-[14px] px-2">
@@ -324,7 +325,7 @@
               </div>
             </div>
             <div class="relative mb-12">
-              <div class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
+              <div id="outcomes_analysis" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Outcomes Analysis
               </div>
               <pre class="mb-6 text-greyText text-[14px] px-2">
@@ -363,7 +364,7 @@
               </div>
             </div>
             <div class="relative mb-12">
-              <div class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
+              <div id="conclusion" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Conclusion
               </div>
               <pre class="mb-6 text-greyText text-[14px] px-2">
@@ -402,7 +403,7 @@
               </div>
             </div>
             <div class="relative mb-12">
-              <div class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
+              <div id="appendix" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Appendix
               </div>
               <pre class="mb-6 text-greyText text-[14px] px-2">
@@ -445,16 +446,20 @@
       </div>
     </div>
   </main>
+</LayoutHome>
 </template>
 
 <script>
 import { useRoute } from 'vue-router'
 import Helpers from '@/utils/helpers'
 import MemoService from '@/services/memo.service'
+import LayoutHome from '@/components/LayoutHome.vue'
 import { ref } from 'vue'
 export default {
   name: 'HomeView',
-  components: {},
+  components: {
+    LayoutHome
+  },
   setup () {
     const route = useRoute()
     const memo = ref({})
