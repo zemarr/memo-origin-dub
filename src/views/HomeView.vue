@@ -2,7 +2,7 @@
   <LayoutHome :contentData="memo">
   <main class="bg-grey-300">
     <div
-      :class="!dataloaded ? 'flex items-center justify-center home bg-faintGrey min-h-screen p-8' : ''"
+      :class="!dataloaded ? 'flex items-center justify-center home bg-faintGrey min-h-screen p-8 max-w-[894px] mx-auto' : ''"
     >
       <div class="mt-20" v-if="!dataloaded && !error">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgb(241, 242, 243); display: block; shape-rendering: auto;" width="100px" height="100px" viewBox="0 0 100 100" pserveAspectRatio="xMidYMid">
@@ -502,11 +502,11 @@ export default {
 </script>
 
 <style scoped>
-p {
-white-space: p-wrap;       /* Since CSS 2.1 */
-white-space: -moz-p-wrap;  /* Mozilla, since 1999 */
-white-space: -p-wrap;      /* Opera 4-6 */
-white-space: -o-p-wrap;    /* Opera 7 */
+ p {
+ white-space: p-wrap;       /* Since CSS 2.1 */
+ white-space: -moz-p-wrap;  /* Mozilla, since 1999 */
+ white-space: -p-wrap;      /* Opera 4-6 */
+ white-space: -o-p-wrap;    /* Opera 7 */
 word-wrap: break-word;       /* Internet Explorer 5.5+ */
 font-size: inherit;
 border: initial;
