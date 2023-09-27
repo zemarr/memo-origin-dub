@@ -1,5 +1,4 @@
 <template>
-  <LayoutHome :contentData="memo">
   <main class="bg-grey-300">
     <div
       :class="!dataloaded ? 'flex items-center justify-center home bg-faintGrey min-h-screen p-8 max-w-[894px] mx-auto' : ''"
@@ -39,7 +38,11 @@
       </div>
       <div v-if="dataloaded" class="home min-h-screen p-8">
         <div class="overview bg-white rounded-[4px] px-8 py-9">
-          <div class="flex items-start md:flex-row flex-col w-full mb-3">
+          <div class="flex items-start flex-col w-full mb-3">
+            <img class="cursor-pointer" src="../assets/images/svgs/align-right.svg" alt="Image" @click="toggleNavigation" />
+          </div>
+          <div class="nav-bar" v-if="showComponent"><LayoutHome  :contentData="memo"/></div>
+          <div class="flex   md:flex-row flex-col w-full mb-3">
             <div class="logo w-[80px] h-[80px] mr-4">
               <img :src="`${s3Bucket}${memo.logo}`" alt="">
             </div>
@@ -446,7 +449,6 @@
       </div>
     </div>
   </main>
-</LayoutHome>
 </template>
 
 <script>
@@ -459,6 +461,11 @@ export default {
   name: 'HomeView',
   components: {
     LayoutHome
+  },
+  methods: {
+    toggleNavigation () {
+      this.showNavigation = !this.showNavigation
+    }
   },
   setup () {
     const route = useRoute()
@@ -495,22 +502,35 @@ export default {
       Helpers,
       getDate,
       dataloaded,
-      error
+      error,
+      showNavigation: false
     }
   }
 }
+
 </script>
 
 <style scoped>
+
+  .nav-bar {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Initially hidden on the left */
+    width: 300px; /* Width of the navigation bar */
+    height: 100%;
+    background-color: #fff; /* Background color of the navigation bar */
+    transition: left 0.3s ease; /* Adding transition effect */
+  }
+
  p {
  white-space: p-wrap;       /* Since CSS 2.1 */
  white-space: -moz-p-wrap;  /* Mozilla, since 1999 */
  white-space: -p-wrap;      /* Opera 4-6 */
  white-space: -o-p-wrap;    /* Opera 7 */
-word-wrap: break-word;       /* Internet Explorer 5.5+ */
-font-size: inherit;
-border: initial;
-padding: initial;
-font-family: inherit;
+ word-wrap: break-word;       /* Internet Explorer 5.5+ */
+ font-size: inherit;
+ border: initial;
+ padding: initial;
+ font-family: inherit;
 }
 </style>
