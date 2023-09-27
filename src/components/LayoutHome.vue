@@ -6,7 +6,7 @@
         <!-- <h2 class="text-[30px] leading-[48px]">Memo</h2> -->
       </div>
       <ul>
-        <li v-for="item in keyList" :key="item.id" @click="goAnchor(item)" class="cursor-pointer text-slate-500 text-[18px] font-normal leading-[24px] rounded-[4px] mb-[8px]">{{ item.name }}</li>
+        <li v-for="item in keyList" :key="item.id" @click="goAnchor(item)" class="cursor-pointer text-slate-500 text-[18px] font-normal leading-[24px] rounded-[4px] mb-[8px] hover:underline hover:text-black">{{ item.name }}</li>
       </ul>
     </div>
     <div class="right ml-[340px]">
