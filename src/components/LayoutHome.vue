@@ -1,12 +1,15 @@
 <template>
-   <div class="container flex">
-    <div class="left fixed min-h-screen top-90px p-8 bg-white  w-48 text-slate-500 bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
-      <div><img src="../assets//images/kinfolk-black.svg" alt="" class="w-[24px] h-[40px]"></div>
-      <div class="cursor-pointer" v-for="item in keyList" :key="item.id">
-        <h1 @click="goAnchor(item)"  >{{ item.name }}</h1>
+   <div class="">
+    <div class="left fixed h-screen top-0 p-8  min-w-[max-content] w-auto bg-faintGrey text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
+      <div class="flex items-center">
+        <img src="../assets//images/kinfolk-black.svg" alt="" class="w-[34px] h-[50px] mr-3 mb-4">
+        <!-- <h2 class="text-[30px] leading-[48px]">Memo</h2> -->
       </div>
+      <ul>
+        <li v-for="item in keyList" :key="item.id" @click="goAnchor(item)" class="cursor-pointer text-slate-500 text-[18px] font-normal leading-[24px] rounded-[4px] mb-[8px]">{{ item.name }}</li>
+      </ul>
     </div>
-    <div class="right ml-36">
+    <div class="right ml-[340px]">
       <slot></slot>
     </div>
    </div>
