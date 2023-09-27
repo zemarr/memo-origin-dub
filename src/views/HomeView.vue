@@ -1,11 +1,10 @@
 <template>
-  <LayoutHome :contentData="memo">
-  <main class="bg-grey-300">
+  <main class="p-[72px]">
     <div
-      :class="!dataloaded ? 'flex items-center justify-center home bg-faintGrey min-h-screen p-8' : ''"
+      :class="!dataloaded ? 'flex items-center justify-center home bg-faintGrey min-h-screen p-8 max-w-[894px] mx-auto' : ''"
     >
       <div class="mt-20" v-if="!dataloaded && !error">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgb(241, 242, 243); display: block; shape-rendering: auto;" width="100px" height="100px" viewBox="0 0 100 100" pserveAspectRatio="xMidYMid">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgb(241, 242, 243); display: block; shape-rendering: auto;" width="100px" height="100px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
           <g transform="translate(26.666666666666668,26.666666666666668)">
             <rect x="-20" y="-20" width="40" height="40" fill="#000000">
               <animateTransform attributeName="transform" type="scale" repeatCount="indefinite" dur="1s" keyTimes="0;1" values="1.1500000000000001;1" begin="-0.3s"></animateTransform>
@@ -37,7 +36,7 @@
           <p class="w-[210px] mt-4 font-Rubik text-[13px] leading-[20px] text-greyText text-center">Unable to load memo! This memo does not exist</p>
         </div>
       </div>
-      <div v-if="dataloaded" class="home min-h-screen p-8">
+      <div v-if="dataloaded" class="home bg-faintGrey min-h-screen p-8 max-w-[894px] mx-auto">
         <div class="overview bg-white rounded-[4px] px-8 py-9">
           <div class="flex items-start md:flex-row flex-col w-full mb-3">
             <div class="logo w-[80px] h-[80px] mr-4">
@@ -83,7 +82,7 @@
         <div class="relative">
           <div class="bg-white rounded-[4px] p-8 mt-8">
             <div class="relative">
-              <div id="team" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
+              <div class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Team
               </div>
               <ul class="mb-6 list-disc ml-4 text-greyText text-[14px]">
@@ -94,9 +93,9 @@
               <div class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Market Opportunity
               </div>
-              <p class="mb-6 text-greyText text-[14px] px-2">
+              <pre class="mb-6 text-greyText text-[14px] px-2">
                 {{memo.market_opportunity}}
-              </p>
+              </pre>
               <div class="grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5">
                 <div
                   v-for="(file, index) in memo.market_opportunity_docs"
@@ -122,7 +121,7 @@
                   </div>
                   <div class="flex items-center h-[70px] w-full bg-white absolute bottom-0">
                     <div class="ml-4">
-                      <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik mb-2">{{ file.file_name }}</h3>
+                      <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik">{{ file.file_name }}</h3>
                       <p class="text-[13px] text-greyText leading-[15.41px] font-Rubik">{{getDate(file.created_at)}}</p>
                     </div>
                   </div>
@@ -130,12 +129,12 @@
               </div>
             </div>
             <div class="relative mb-12">
-              <div id="customer_pricing" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
+              <div class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Customer & Pricing
               </div>
-              <p class="mb-6 text-greyText text-[14px] px-2">
+              <pre class="mb-6 text-greyText text-[14px] px-2">
                 {{memo.customer_and_pricing}}
-              </p>
+              </pre>
               <div class="grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5">
                 <div
                   v-for="(file, index) in memo.customer_and_pricing_docs"
@@ -161,7 +160,7 @@
                   </div>
                   <div class="flex items-center h-[70px] w-full bg-white absolute bottom-0">
                     <div class="ml-4">
-                      <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik mb-2">{{ file.file_name }}</h3>
+                      <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik">{{ file.file_name }}</h3>
                       <p class="text-[13px] text-greyText leading-[15.41px] font-Rubik">{{getDate(file.created_at)}}</p>
                     </div>
                   </div>
@@ -169,12 +168,12 @@
               </div>
             </div>
             <div class="mb-12 relative">
-              <div id="product" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
+              <div class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Product
               </div>
-              <p class="mb-6 text-greyText text-[14px] px-2">
+              <pre class="mb-6 text-greyText text-[14px] px-2">
                 {{memo.product}}
-              </p>
+              </pre>
               <div class="grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5">
                 <div
                   v-for="(file, index) in memo.product_docs"
@@ -200,7 +199,7 @@
                   </div>
                   <div class="flex items-center h-[70px] w-full bg-white absolute bottom-0">
                     <div class="ml-4">
-                      <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik mb-2">{{ file.file_name }}</h3>
+                      <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik">{{ file.file_name }}</h3>
                       <p class="text-[13px] text-greyText leading-[15.41px] font-Rubik">{{getDate(file.created_at)}}</p>
                     </div>
                   </div>
@@ -208,12 +207,12 @@
               </div>
             </div>
             <div class="relative mb-12">
-              <div id="customers_cquisition_retention" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
+              <div class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Customers Acquisition & Retention
               </div>
-              <p class="mb-6 text-greyText text-[14px] px-2">
+              <pre class="mb-6 text-greyText text-[14px] px-2">
                 {{memo.acquisition_and_retention}}
-              </p>
+              </pre>
               <div class="grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5">
                 <div
                   v-for="(file, index) in memo.acquisition_and_retention_docs"
@@ -239,7 +238,7 @@
                   </div>
                   <div class="flex items-center h-[70px] w-full bg-white absolute bottom-0">
                     <div class="ml-4">
-                      <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik mb-2">{{ file.file_name }}</h3>
+                      <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik">{{ file.file_name }}</h3>
                       <p class="text-[13px] text-greyText leading-[15.41px] font-Rubik">{{getDate(file.created_at)}}</p>
                     </div>
                   </div>
@@ -247,12 +246,12 @@
               </div>
             </div>
             <div class="relative mb-12">
-              <div id="summary_financial" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
+              <div class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Summary Financials
               </div>
-              <p class="mb-6 text-greyText text-[14px] px-2">
+              <pre class="mb-6 text-greyText text-[14px] px-2">
                 {{memo.summary_financials}}
-              </p>
+              </pre>
               <div class="grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5">
                 <div
                   v-for="(file, index) in memo.summary_financials_docs"
@@ -278,7 +277,7 @@
                   </div>
                   <div class="flex items-center h-[70px] w-full bg-white absolute bottom-0">
                     <div class="ml-4">
-                      <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik mb-2">{{ file.file_name }}</h3>
+                      <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik">{{ file.file_name }}</h3>
                       <p class="text-[13px] text-greyText leading-[15.41px] font-Rubik">{{getDate(file.created_at)}}</p>
                     </div>
                   </div>
@@ -286,12 +285,12 @@
               </div>
             </div>
             <div class="relative mb-12">
-              <div id="deal" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
+              <div class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Deal
               </div>
-              <p class="mb-6 text-greyText text-[14px] px-2">
+              <pre class="mb-6 text-greyText text-[14px] px-2">
                 {{memo.deal}}
-              </p>
+              </pre>
               <div class="grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5">
                 <div
                   v-for="(file, index) in memo.deal_docs"
@@ -317,7 +316,7 @@
                   </div>
                   <div class="flex items-center h-[70px] w-full bg-white absolute bottom-0">
                     <div class="ml-4">
-                      <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik mb-2">{{ file.file_name }}</h3>
+                      <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik">{{ file.file_name }}</h3>
                       <p class="text-[13px] text-greyText leading-[15.41px] font-Rubik">{{getDate(file.created_at)}}</p>
                     </div>
                   </div>
@@ -325,12 +324,12 @@
               </div>
             </div>
             <div class="relative mb-12">
-              <div id="outcomes_analysis" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
+              <div class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Outcomes Analysis
               </div>
-              <p class="mb-6 text-greyText text-[14px] px-2">
+              <pre class="mb-6 text-greyText text-[14px] px-2">
                 {{memo.outcomes_analysis}}
-              </p>
+              </pre>
               <div class="grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5">
                 <div
                   v-for="(file, index) in memo.outcomes_analysis_docs"
@@ -356,7 +355,7 @@
                   </div>
                   <div class="flex items-center h-[70px] w-full bg-white absolute bottom-0">
                     <div class="ml-4">
-                      <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik mb-2">{{ file.file_name }}</h3>
+                      <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik">{{ file.file_name }}</h3>
                       <p class="text-[13px] text-greyText leading-[15.41px] font-Rubik">{{getDate(file.created_at)}}</p>
                     </div>
                   </div>
@@ -364,12 +363,12 @@
               </div>
             </div>
             <div class="relative mb-12">
-              <div id="conclusion" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
+              <div class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Conclusion
               </div>
-              <p class="mb-6 text-greyText text-[14px] px-2">
+              <pre class="mb-6 text-greyText text-[14px] px-2">
                 {{memo.conclusion}}
-              </p>
+              </pre>
               <div class="grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5">
                 <div
                   v-for="(file, index) in memo.conclusion_docs"
@@ -395,7 +394,7 @@
                   </div>
                   <div class="flex items-center h-[70px] w-full bg-white absolute bottom-0">
                     <div class="ml-4">
-                      <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik mb-2">{{ file.file_name }}</h3>
+                      <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik">{{ file.file_name }}</h3>
                       <p class="text-[13px] text-greyText leading-[15.41px] font-Rubik">{{getDate(file.created_at)}}</p>
                     </div>
                   </div>
@@ -403,12 +402,12 @@
               </div>
             </div>
             <div class="relative mb-12">
-              <div id="appendix" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
+              <div class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Appendix
               </div>
-              <p class="mb-6 text-greyText text-[14px] px-2">
+              <pre class="mb-6 text-greyText text-[14px] px-2">
                 {{memo.appendix}}
-              </p>
+              </pre>
               <div class="grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5">
                 <div
                   v-for="(file, index) in memo.appendix_docs"
@@ -434,7 +433,7 @@
                   </div>
                   <div class="flex items-center h-[70px] w-full bg-white absolute bottom-0">
                     <div class="ml-4">
-                      <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik mb-2">{{ file.file_name }}</h3>
+                      <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik">{{ file.file_name }}</h3>
                       <p class="text-[13px] text-greyText leading-[15.41px] font-Rubik">{{getDate(file.created_at)}}</p>
                     </div>
                   </div>
@@ -446,20 +445,16 @@
       </div>
     </div>
   </main>
-</LayoutHome>
 </template>
 
 <script>
 import { useRoute } from 'vue-router'
 import Helpers from '@/utils/helpers'
 import MemoService from '@/services/memo.service'
-import LayoutHome from '@/components/LayoutHome.vue'
 import { ref } from 'vue'
 export default {
   name: 'HomeView',
-  components: {
-    LayoutHome
-  },
+  components: {},
   setup () {
     const route = useRoute()
     const memo = ref({})
@@ -502,11 +497,11 @@ export default {
 </script>
 
 <style scoped>
-p {
-white-space: p-wrap;       /* Since CSS 2.1 */
-white-space: -moz-p-wrap;  /* Mozilla, since 1999 */
-white-space: -p-wrap;      /* Opera 4-6 */
-white-space: -o-p-wrap;    /* Opera 7 */
+pre {
+white-space: pre-wrap;       /* Since CSS 2.1 */
+white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+white-space: -pre-wrap;      /* Opera 4-6 */
+white-space: -o-pre-wrap;    /* Opera 7 */
 word-wrap: break-word;       /* Internet Explorer 5.5+ */
 font-size: inherit;
 border: initial;
