@@ -10,7 +10,7 @@
        <!-- <h2 class="text-[30px] leading-[48px]">Memo</h2> -->
      </div>
       <ul class=" fixed h-screen shadow-lg w-[max-content] z-[1000] transition-all translate-x-[-360px] md:translate-x-0'" :class="showComponent ? 'translate-x-[-360px]' : 'translate-x-0' ">
-      <li v-for="item in keyList" :key="item.id" @click="goAnchor(item)" class="cursor-pointer text-slate-500 text-[18px] font-normal leading-[24px] rounded-[4px] mb-[8px] hover:underline hover:text-black">{{ item.name }}</li>
+      <li v-for="item in keyList" :key="item.id" @click="goAnchor(item)" class="cursor-pointer text-slate-500 text-[10px] font-normal leading-[24px] rounded-[4px] mb-[8px] hover:underline hover:text-black">{{ item.name }}</li>
      </ul>
     </div>
    </div>
