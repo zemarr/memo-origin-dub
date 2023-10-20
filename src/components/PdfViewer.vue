@@ -1,6 +1,6 @@
 
 <template>
-  <div class="scrollable-div interviewVideo_main relative h-[172px] w-full overflow-hidden" id="videoContainer">
+  <div class="scrollable-div  relative h-[172px] w-full overflow-hidden" id="videoContainer">
   <!--This section dynamically generates the corresponding number of canvas canvases based on the number of pages in the PDF-->
   <canvas
     v-for="pageIndex in pdfPages"
@@ -76,9 +76,7 @@ watch(() => props.pdfUrl, (cur, prev) => {
 </script>
 
 <style>
-.interviewVideo_main {
-  height: 172px;
-}
+
 .scrollable-div::-webkit-scrollbar {
   display: none;
 }
