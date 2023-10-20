@@ -90,7 +90,7 @@
                 <li v-for="(member, id) in memo.team" :key="id">{{member.name}} - {{member.role}}</li>
               </ul>
             </div>
-            <div class="relative mb-12">
+            <div class="relative mb-24">
               <div class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Market Opportunity
               </div>
@@ -101,8 +101,8 @@
                 <div
                   v-for="(file, index) in memo.market_opportunity_docs"
                   :key="index"
-                  class="relative h-[170px] bg-faintGrey rounded border box-shadow">
-                  <div class="flex justify-center mt-3">
+                  class="relative sm:mb-[40px] md:mb-[40px] h-[170px] bg-faintGrey ">
+                  <div class="flex justify-center rounded border box-shadow">
                     <a v-if="Helpers.getFileExtension(file.file_name)"
                       class="cursor-pointer"
                       :href="`https://view.officeapps.live.com/op/view.aspx?src=${s3Bucket}${file.file_name}`"
@@ -112,15 +112,17 @@
                       <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/>
                     </a>
                     <a v-else
-                      class="cursor-pointer"
+                      class="cursor-pointer w-full"
                       :href="`${s3Bucket}${file.file_name}`"
                       :download="`${file.file_name}`"
                       target="_blank"
                     >
-                      <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/>
+                    <PdfViewer :pdfUrl="`https://origins-files-staging.s3.us-east-2.amazonaws.com/files/${file.file_name}`"/>
+
+                      <!-- <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/> -->
                     </a>
                   </div>
-                  <div class="flex items-center h-[70px] w-full bg-white absolute bottom-0">
+                  <div class="flex items-center h-[70px] w-full bg-white  bottom-0">
                     <div class="ml-4">
                       <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik mb-2">{{ file.file_name }}</h3>
                       <p class="text-[13px] text-greyText leading-[15.41px] font-Rubik">{{getDate(file.created_at)}}</p>
@@ -129,7 +131,7 @@
                 </div>
               </div>
             </div>
-            <div class="relative mb-12">
+            <div class="relative mb-24">
               <div id="customer_pricing" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Customer & Pricing
               </div>
@@ -141,7 +143,7 @@
                   v-for="(file, index) in memo.customer_and_pricing_docs"
                   :key="index"
                   class="relative h-[170px] bg-faintGrey rounded border box-shadow">
-                  <div class="flex justify-center mt-3">
+                  <div class="flex justify-center border box-shadow">
                     <a v-if="Helpers.getFileExtension(file.file_name)"
                       class="cursor-pointer"
                       :href="`https://view.officeapps.live.com/op/view.aspx?src=${s3Bucket}${file.file_name}`"
@@ -151,15 +153,16 @@
                       <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/>
                     </a>
                     <a v-else
-                      class="cursor-pointer"
+                      class="cursor-pointer  w-full"
                       :href="`${s3Bucket}${file.file_name}`"
                       :download="`${file.file_name}`"
                       target="_blank"
                     >
-                      <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/>
+                      <!-- <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/> -->
+                      <PdfViewer :pdfUrl="`https://origins-files-staging.s3.us-east-2.amazonaws.com/files/${file.file_name}`"/>
                     </a>
                   </div>
-                  <div class="flex items-center h-[70px] w-full bg-white absolute bottom-0">
+                  <div class="flex items-center h-[70px] w-full bg-white  bottom-0">
                     <div class="ml-4">
                       <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik mb-2">{{ file.file_name }}</h3>
                       <p class="text-[13px] text-greyText leading-[15.41px] font-Rubik">{{getDate(file.created_at)}}</p>
@@ -168,7 +171,7 @@
                 </div>
               </div>
             </div>
-            <div class="mb-12 relative">
+            <div class="mb-24 relative">
               <div id="product" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Product
               </div>
@@ -179,8 +182,8 @@
                 <div
                   v-for="(file, index) in memo.product_docs"
                   :key="index"
-                  class="relative h-[170px] bg-faintGrey rounded border box-shadow">
-                  <div class="flex justify-center mt-3">
+                  class="relative h-[170px] bg-faintGrey ">
+                  <div class="flex justify-center rounded border box-shadow">
                     <a v-if="Helpers.getFileExtension(file.file_name)"
                       class="cursor-pointer"
                       :href="`https://view.officeapps.live.com/op/view.aspx?src=${s3Bucket}${file.file_name}`"
@@ -190,15 +193,16 @@
                       <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/>
                     </a>
                     <a v-else
-                      class="cursor-pointer"
+                      class="cursor-pointer  w-full"
                       :href="`${s3Bucket}${file.file_name}`"
                       :download="`${file.file_name}`"
                       target="_blank"
                     >
-                      <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/>
+                      <!-- <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/> -->
+                      <PdfViewer :pdfUrl="`https://origins-files-staging.s3.us-east-2.amazonaws.com/files/${file.file_name}`"/>
                     </a>
                   </div>
-                  <div class="flex items-center h-[70px] w-full bg-white absolute bottom-0">
+                  <div class="flex items-center h-[70px] w-full bg-white  bottom-0">
                     <div class="ml-4">
                       <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik mb-2">{{ file.file_name }}</h3>
                       <p class="text-[13px] text-greyText leading-[15.41px] font-Rubik">{{getDate(file.created_at)}}</p>
@@ -207,7 +211,7 @@
                 </div>
               </div>
             </div>
-            <div class="relative mb-12">
+            <div class="relative mb-24">
               <div id="customers_cquisition_retention" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Customers Acquisition & Retention
               </div>
@@ -218,8 +222,8 @@
                 <div
                   v-for="(file, index) in memo.acquisition_and_retention_docs"
                   :key="index"
-                  class="relative h-[170px] bg-faintGrey rounded border box-shadow">
-                  <div class="flex justify-center mt-3">
+                  class="relative h-[170px] bg-faintGrey ">
+                  <div class="flex justify-center rounded border box-shadow">
                     <a v-if="Helpers.getFileExtension(file.file_name)"
                       class="cursor-pointer"
                       :href="`https://view.officeapps.live.com/op/view.aspx?src=${s3Bucket}${file.file_name}`"
@@ -229,15 +233,16 @@
                       <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/>
                     </a>
                     <a v-else
-                      class="cursor-pointer"
+                      class="cursor-pointer  w-full"
                       :href="`${s3Bucket}${file.file_name}`"
                       :download="`${file.file_name}`"
                       target="_blank"
                     >
-                      <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/>
+                      <!-- <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/> -->
+                      <PdfViewer :pdfUrl="`https://origins-files-staging.s3.us-east-2.amazonaws.com/files/${file.file_name}`"/>
                     </a>
                   </div>
-                  <div class="flex items-center h-[70px] w-full bg-white absolute bottom-0">
+                  <div class="flex items-center h-[70px] w-full bg-white  bottom-0">
                     <div class="ml-4">
                       <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik mb-2">{{ file.file_name }}</h3>
                       <p class="text-[13px] text-greyText leading-[15.41px] font-Rubik">{{getDate(file.created_at)}}</p>
@@ -246,7 +251,7 @@
                 </div>
               </div>
             </div>
-            <div class="relative mb-12">
+            <div class="relative mb-24">
               <div id="summary_financial" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Summary Financials
               </div>
@@ -257,8 +262,8 @@
                 <div
                   v-for="(file, index) in memo.summary_financials_docs"
                   :key="index"
-                  class="relative h-[170px] bg-faintGrey rounded border box-shadow">
-                  <div class="flex justify-center mt-3">
+                  class="relative h-[170px] bg-faintGrey ">
+                  <div class="flex justify-center rounded border box-shadow">
                     <a v-if="Helpers.getFileExtension(file.file_name)"
                       class="cursor-pointer"
                       :href="`https://view.officeapps.live.com/op/view.aspx?src=${s3Bucket}${file.file_name}`"
@@ -268,15 +273,16 @@
                       <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/>
                     </a>
                     <a v-else
-                      class="cursor-pointer"
+                      class="cursor-pointer  w-full"
                       :href="`${s3Bucket}${file.file_name}`"
                       :download="`${file.file_name}`"
                       target="_blank"
                     >
-                      <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/>
+                      <!-- <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/> -->
+                      <PdfViewer :pdfUrl="`https://origins-files-staging.s3.us-east-2.amazonaws.com/files/${file.file_name}`"/>
                     </a>
                   </div>
-                  <div class="flex items-center h-[70px] w-full bg-white absolute bottom-0">
+                  <div class="flex items-center h-[70px] w-full bg-white  bottom-0">
                     <div class="ml-4">
                       <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik mb-2">{{ file.file_name }}</h3>
                       <p class="text-[13px] text-greyText leading-[15.41px] font-Rubik">{{getDate(file.created_at)}}</p>
@@ -285,7 +291,7 @@
                 </div>
               </div>
             </div>
-            <div class="relative mb-12">
+            <div class="relative mb-24">
               <div id="deal" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Deal
               </div>
@@ -296,8 +302,8 @@
                 <div
                   v-for="(file, index) in memo.deal_docs"
                   :key="index"
-                  class="relative h-[170px] bg-faintGrey rounded border box-shadow">
-                  <div class="flex justify-center mt-3">
+                  class="relative h-[170px] bg-faintGrey ">
+                  <div class="flex justify-center rounded border box-shadow">
                     <a v-if="Helpers.getFileExtension(file.file_name)"
                       class="cursor-pointer"
                       :href="`https://view.officeapps.live.com/op/view.aspx?src=${s3Bucket}${file.file_name}`"
@@ -307,15 +313,16 @@
                       <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/>
                     </a>
                     <a v-else
-                      class="cursor-pointer"
+                      class="cursor-pointer  w-full"
                       :href="`${s3Bucket}${file.file_name}`"
                       :download="`${file.file_name}`"
                       target="_blank"
                     >
-                      <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/>
+                      <!-- <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/> -->
+                      <PdfViewer :pdfUrl="`https://origins-files-staging.s3.us-east-2.amazonaws.com/files/${file.file_name}`"/>
                     </a>
                   </div>
-                  <div class="flex items-center h-[70px] w-full bg-white absolute bottom-0">
+                  <div class="flex items-center h-[70px] w-full bg-white  bottom-0">
                     <div class="ml-4">
                       <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik mb-2">{{ file.file_name }}</h3>
                       <p class="text-[13px] text-greyText leading-[15.41px] font-Rubik">{{getDate(file.created_at)}}</p>
@@ -324,7 +331,7 @@
                 </div>
               </div>
             </div>
-            <div class="relative mb-12">
+            <div class="relative mb-24">
               <div id="outcomes_analysis" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Outcomes Analysis
               </div>
@@ -335,8 +342,8 @@
                 <div
                   v-for="(file, index) in memo.outcomes_analysis_docs"
                   :key="index"
-                  class="relative h-[170px] bg-faintGrey rounded border box-shadow">
-                  <div class="flex justify-center mt-3">
+                  class="relative h-[170px] bg-faintGrey ">
+                  <div class="flex justify-center rounded border box-shadow">
                     <a v-if="Helpers.getFileExtension(file.file_name)"
                       class="cursor-pointer"
                       :href="`https://view.officeapps.live.com/op/view.aspx?src=${s3Bucket}${file.file_name}`"
@@ -346,15 +353,16 @@
                       <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/>
                     </a>
                     <a v-else
-                      class="cursor-pointer"
+                      class="cursor-pointer  w-full"
                       :href="`${s3Bucket}${file.file_name}`"
                       :download="`${file.file_name}`"
                       target="_blank"
                     >
-                      <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/>
+                      <!-- <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/> -->
+                      <PdfViewer :pdfUrl="`https://origins-files-staging.s3.us-east-2.amazonaws.com/files/${file.file_name}`"/>
                     </a>
                   </div>
-                  <div class="flex items-center h-[70px] w-full bg-white absolute bottom-0">
+                  <div class="flex items-center h-[70px] w-full bg-white  bottom-0">
                     <div class="ml-4">
                       <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik mb-2">{{ file.file_name }}</h3>
                       <p class="text-[13px] text-greyText leading-[15.41px] font-Rubik">{{getDate(file.created_at)}}</p>
@@ -363,7 +371,7 @@
                 </div>
               </div>
             </div>
-            <div class="relative mb-12">
+            <div class="relative mb-24">
               <div id="conclusion" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Conclusion
               </div>
@@ -374,8 +382,8 @@
                 <div
                   v-for="(file, index) in memo.conclusion_docs"
                   :key="index"
-                  class="relative h-[170px] bg-faintGrey rounded border box-shadow">
-                  <div class="flex justify-center mt-3">
+                  class="relative h-[170px] bg-faintGrey ">
+                  <div class="flex justify-center rounded border box-shadow">
                     <a v-if="Helpers.getFileExtension(file.file_name)"
                       class="cursor-pointer"
                       :href="`https://view.officeapps.live.com/op/view.aspx?src=${s3Bucket}${file.file_name}`"
@@ -385,15 +393,16 @@
                       <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/>
                     </a>
                     <a v-else
-                      class="cursor-pointer"
+                      class="cursor-pointer  w-full"
                       :href="`${s3Bucket}${file.file_name}`"
                       :download="`${file.file_name}`"
                       target="_blank"
                     >
-                      <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/>
+                      <!-- <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/> -->
+                      <PdfViewer :pdfUrl="`https://origins-files-staging.s3.us-east-2.amazonaws.com/files/${file.file_name}`"/>
                     </a>
                   </div>
-                  <div class="flex items-center h-[70px] w-full bg-white absolute bottom-0">
+                  <div class="flex items-center h-[70px] w-full bg-white  bottom-0">
                     <div class="ml-4">
                       <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik mb-2">{{ file.file_name }}</h3>
                       <p class="text-[13px] text-greyText leading-[15.41px] font-Rubik">{{getDate(file.created_at)}}</p>
@@ -402,7 +411,7 @@
                 </div>
               </div>
             </div>
-            <div class="relative mb-12">
+            <div class="relative mb-24">
               <div id="appendix" class="bg-faintGrey px-4 py-[6px] text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px]">
                 Appendix
               </div>
@@ -413,8 +422,8 @@
                 <div
                   v-for="(file, index) in memo.appendix_docs"
                   :key="index"
-                  class="relative h-[170px] bg-faintGrey rounded border box-shadow">
-                  <div class="flex justify-center mt-3">
+                  class="relative h-[170px] bg-faintGrey ">
+                  <div class="flex justify-center rounded border box-shadow">
                     <a v-if="Helpers.getFileExtension(file.file_name)"
                       class="cursor-pointer"
                       :href="`https://view.officeapps.live.com/op/view.aspx?src=${s3Bucket}${file.file_name}`"
@@ -424,15 +433,16 @@
                       <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/>
                     </a>
                     <a v-else
-                      class="cursor-pointer"
+                      class="cursor-pointer  w-full"
                       :href="`${s3Bucket}${file.file_name}`"
                       :download="`${file.file_name}`"
                       target="_blank"
                     >
-                      <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/>
+                      <!-- <img class="w-10 h-10" :src="require(`../assets/files/${Helpers.getFileIcon(file.mime_type)}.png`)"/> -->
+                      <PdfViewer :pdfUrl="`https://origins-files-staging.s3.us-east-2.amazonaws.com/files/${file.file_name}`"/>
                     </a>
                   </div>
-                  <div class="flex items-center h-[70px] w-full bg-white absolute bottom-0">
+                  <div class="flex items-center h-[70px] w-full bg-white  bottom-0">
                     <div class="ml-4">
                       <h3 class="text-[14px] text-black leading-[16.59px] font-medium font-Rubik mb-2">{{ file.file_name }}</h3>
                       <p class="text-[13px] text-greyText leading-[15.41px] font-Rubik">{{getDate(file.created_at)}}</p>
@@ -454,11 +464,13 @@ import { useRoute } from 'vue-router'
 import Helpers from '@/utils/helpers'
 import MemoService from '@/services/memo.service'
 import LayoutHome from '@/components/LayoutHome.vue'
+import PdfViewer from '@/components/PdfViewer.vue'
 import { ref } from 'vue'
 export default {
   name: 'HomeView',
   components: {
-    LayoutHome
+    LayoutHome,
+    PdfViewer
   },
   setup () {
     const route = useRoute()

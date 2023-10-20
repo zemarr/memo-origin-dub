@@ -1,7 +1,7 @@
 <template>
   <div class="">
    <div class="left fixed h-screen -top-1 p-8 min-w-[max-content] w-auto backdrop-blur-lg text-[16px] font-[500] leading-[24px] rounded-[4px] mb-[8px] transition-all shadow-lg z-[1000]" :class="(!showSidebar && windowWidth <= 1023) ? '-translate-x-[340px]' : 'translate-x-0'">
-     <button @click="showSidebar = !showSidebar" class="absolute -right-[52px] backdrop-blur-lg backdrop-opacity-80 py-3 px-2 flex items-center justify-center shadow-md rounded-tr-md rounded-br-md z-[1000] lg:hidden">
+    <button @click="showSidebar = !showSidebar" class="absolute -right-[52px] backdrop-blur-lg backdrop-opacity-80 py-3 px-2 flex items-center justify-center shadow-md rounded-tr-md rounded-br-md z-[1000] lg:hidden">
        <span v-show="!showSidebar" class="expand block w-7">
          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="expand"><g data-name="Layer 2"><path d="M20 5a1 1 0 0 0-1-1h-5a1 1 0 0 0 0 2h2.57l-3.28 3.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0L18 7.42V10a1 1 0 0 0 1 1 1 1 0 0 0 1-1zm-9.29 8.29a1 1 0 0 0-1.42 0L6 16.57V14a1 1 0 0 0-1-1 1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 0-2H7.42l3.29-3.29a1 1 0 0 0 0-1.42z" data-name="expand"></path></g></svg>
        </span>
@@ -13,8 +13,11 @@
        <img src="../assets//images/kinfolk-black.svg" alt="" class="w-[34px] h-[50px] mr-3 mb-4">
        <!-- <h2 class="text-[30px] leading-[48px]">Memo</h2> -->
      </div>
+     <div class="flex items-center">
+       <strong class="text-[14px] border-bottom border-b border-black text-[#4b5058] pb-[16px] mb-[12px]">TABLE OF CONTENTS</strong>
+     </div>
      <ul>
-       <li v-for="item in keyList" :key="item.id" @click="goAnchor(item)" class="cursor-pointer text-slate-500 text-[18px] font-normal leading-[24px] rounded-[4px] mb-[8px]">{{ item.name }}</li>
+       <li v-for="(item, index) in keyList" :key="item.id" @click="goAnchor(item, index)"  class="cursor-pointer text-[#989aa5] text-[14px] font-normal leading-[24px] rounded-[4px] mb-[8px]" :class="activeIndex  === index || index === keyList.length - 1?'text-[#ed8c00]': ''">{{ item.name }}</li>
      </ul>
    </div>
    <div class="right" :class="windowWidth <= 1023 ? 'ml-0' : 'ml-[340px]'">
@@ -29,11 +32,8 @@ export default {
   setup () {
     const showSidebar = ref(false)
     const windowWidth = ref(window.innerWidth)
+    const activeIndex = ref(0)
     const keyList = ref([
-      {
-        name: 'Team',
-        id: 'team'
-      },
       {
         name: 'Customer & Pricing',
         id: 'customer_pricing'
@@ -65,11 +65,16 @@ export default {
       {
         name: 'Appendix',
         id: 'appendix'
+      },
+      {
+        name: 'Back to top',
+        id: 'team'
       }
     ])
-    const goAnchor = (item) => {
+    const goAnchor = (item, index) => {
       const anchorElement = document.getElementById(item.id)
       closeSidebar()
+      activeIndex.value = index
       if (anchorElement) {
         anchorElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
       }
@@ -82,7 +87,8 @@ export default {
       goAnchor,
       showSidebar,
       closeSidebar,
-      windowWidth
+      windowWidth,
+      activeIndex
     }
   }
 }
